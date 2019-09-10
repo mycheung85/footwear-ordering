@@ -1,0 +1,6 @@
+.buttonColourStatus {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+  font: 16px;
+}

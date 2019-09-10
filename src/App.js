@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ProductList from "./components/ProductList";
+import OrderStatus from "./components/OrderStatus";
+import getProductData from "./data/api";
+import "../src/styles/productList.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      isFiltered: false
+    };
+  }
+
+  componentDidMount() {
+    return getProductData().then(productData => {
+      this.setState({
+        data: productData
+      });
+    });
+  }
+
+  handleClick(e) {
+    const product2 = this.state.data.filter(product => {
+      return product.status.toLowerCase() === e.target.value.toLowerCase();
+    });
+
+    this.setState({
+      data: product2,
+      isFiltered: true
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <OrderStatus handleClick={this.handleClick.bind(this)} />
+        {this.state.data.length > 0 && (
+          <ProductList productData={this.state.data} />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
