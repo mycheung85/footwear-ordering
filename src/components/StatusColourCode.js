@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import colourLookUp from "./statusLookUp";
 
 const StatusColourCode = ({ status }) => {
@@ -15,3 +16,7 @@ const StatusColourCode = ({ status }) => {
 };
 
 export default StatusColourCode;
+
+StatusColourCode.prototype = {
+  statusNoSpaces: PropTypes.bool
+};

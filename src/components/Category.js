@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Category({ category }) {
   return (
@@ -8,3 +9,7 @@ export default function Category({ category }) {
     </div>
   );
 }
+
+Category.propTypes = {
+  category: PropTypes.number
+};

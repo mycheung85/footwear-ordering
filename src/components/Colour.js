@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Colour({ colour }) {
   return (
@@ -8,3 +9,7 @@ export default function Colour({ colour }) {
     </div>
   );
 }
+
+Colour.propTypes = {
+  colour: PropTypes.string
+};

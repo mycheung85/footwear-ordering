@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Size({ size }) {
   return (
@@ -8,3 +9,7 @@ export default function Size({ size }) {
     </div>
   );
 }
+
+Size.propTypes = {
+  size: PropTypes.number
+};
