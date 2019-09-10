@@ -2,8 +2,11 @@ import React from "react";
 import propTypes from "prop-types";
 import "../styles/orderStaus.css";
 
-export default function Status({ handleClick }) {
-  // console.log(props);
+export default function Status({
+  handleClickOrderStatus,
+  handleClickBackButton
+}) {
+  // console.log(handleClickBackButton);
   const productStatus = [
     { status: "Ready to Pay", colour: "green" },
     { status: "On the Way", colour: "blue" },
@@ -18,17 +21,21 @@ export default function Status({ handleClick }) {
             key={buttonStatus.id}
             className="buttonColourStatus"
             style={{ backgroundColor: buttonStatus.colour }}
-            onClick={e => handleClick(e)}
+            onClick={e => handleClickOrderStatus(e)}
             value={buttonStatus.status}
           >
             {buttonStatus.status}
           </button>
         );
       })}
+      <button className="backBtn" onClick={e => handleClickBackButton(e)}>
+        Back
+      </button>
     </div>
   );
 }
 
 Status.propTypes = {
-  handleClick: propTypes.func.isRequired
+  handleClickOrderStaus: propTypes.func.isRequired,
+  handleClickBackButton: propTypes.func.isRequired
 };

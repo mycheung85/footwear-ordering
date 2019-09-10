@@ -10,8 +10,8 @@ import "../styles/productList.css";
 function List({ productData }) {
   return productData.map(product => {
     return (
-      <div className="list-page">
-        <div className="list-item">
+      <div className="list-page" key={product.id}>
+        <div className="list-item" key={product.id}>
           <StatusColourCode status={product.status} />
           <Model product={product} />
           <Size size={product.size} />
